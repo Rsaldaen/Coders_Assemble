@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const fs = require ('fs').promises;
+const fs = require("fs").promises;
 const generatePage = require("./src/generatePage.js");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
@@ -42,12 +42,12 @@ const init = () => {
               message: "What is the manager's office number?",
             },
           ])
-          .then((answers) => {
+          .then((managerResult) => {
             const newManager = new Manager(
-              answers.managerName,
-              answers.managerId,
-              answers.managerEmail,
-              answers.managerNumber
+              managerResult.managerName,
+              managerResult.managerId,
+              managerResult.managerEmail,
+              managerResult.managerNumber
             );
             employeeArray.push(newManager);
             inquirer
@@ -55,7 +55,7 @@ const init = () => {
                 {
                   name: "doneCheck",
                   type: "list",
-                  message: "Add more members?",
+                  message: "Done adding members to the team?",
                   choices: ["Yes", "No"],
                 },
               ])
@@ -96,12 +96,12 @@ const init = () => {
               message: "What is the engineer's github?",
             },
           ])
-          .then((answers) => {
+          .then((engineerResult) => {
             const newEngineer = new Engineer(
-              answers.engineerName,
-              answers.engineerId,
-              answers.engineerEmail,
-              answers.engineerGithub
+              engineerResult.engineerName,
+              engineerResult.engineerId,
+              engineerResult.engineerEmail,
+              engineerResult.engineerGithub
             );
             employeeArray.push(newEngineer);
             inquirer
@@ -109,7 +109,7 @@ const init = () => {
                 {
                   name: "doneCheck",
                   type: "list",
-                  message: "Add more members?",
+                  message: "Done adding members to the team?",
                   choices: ["Yes", "No"],
                 },
               ])
@@ -150,12 +150,12 @@ const init = () => {
               message: "What is the intern's school?",
             },
           ])
-          .then((answers) => {
+          .then((result) => {
             const newIntern = new Intern(
-              answers.internName,
-              answers.internId,
-              answers.internEmail,
-              answers.internSchool
+              result.internName,
+              result.internId,
+              result.internEmail,
+              result.internSchool
             );
             employeeArray.push(newIntern);
             inquirer
@@ -163,7 +163,7 @@ const init = () => {
                 {
                   name: "doneCheck",
                   type: "list",
-                  message: "Add more members?",
+                  message: "Done adding members to the team?",
                   choices: ["Yes", "No"],
                 },
               ])
